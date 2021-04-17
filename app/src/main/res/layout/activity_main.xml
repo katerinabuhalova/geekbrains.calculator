@@ -1,79 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-<GridLayout
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:columnCount="4"
-    android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:background="@drawable/background">
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="4"
+        android:orientation="horizontal">
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:layout_column="3"
-        android:text="/" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:layout_column="3"
+            android:text="/" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_seven" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_seven" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_eight" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_eight" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_nine" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_nine" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_multiplication" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_multiplication" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_four" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_four" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_five" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_five" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_six" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_six" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_minus" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_minus" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_one" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_one" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_two" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_two" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_number_three" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_number_three" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_plus" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_plus" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:layout_columnSpan="2"
-        android:layout_gravity="fill_horizontal"
-        android:text="@string/_number_zero" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill_horizontal"
+            android:text="@string/_number_zero" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_00" />
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_00" />
 
-    <Button
-        style="@style/Theme.Calculator.Button"
-        android:text="@string/_equally" />
-</GridLayout>
+        <Button
+            style="@style/Theme.Calculator.Button"
+            android:text="@string/_equally" />
+    </GridLayout>
 </FrameLayout>
