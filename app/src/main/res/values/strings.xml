@@ -10,11 +10,11 @@
     <string name="_number_eight">8</string>
     <string name="_number_nine">9</string>
     <string name="_number_zero">0</string>
-    <string name="_00">00</string>
+    <string name="_C">C</string>
     <string name="_divide">/</string>
     <string name="_multiplication">*</string>
     <string name="_plus">+</string>
-    <string name="_minus">_</string>
+    <string name="_minus">-</string>
     <string name="_equally">=</string>
 
 </resources>
