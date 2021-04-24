@@ -8,20 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private Button buttonZero;
-    private Button buttonOne;
-    private Button buttonTwo;
-    private Button buttonThree;
-    private Button buttonFour;
-    private Button buttonFive;
-    private Button buttonSix;
-    private Button buttonSeven;
-    private Button buttonEight;
-    private Button buttonNine;
-    private Button buttonC;
+    private final int[] numberButtonIds = new int[]{R.id.buttonZero, R.id.buttonOne, R.id.buttonTwo, R.id.buttonThree,
+            R.id.buttonFour, R.id.buttonFive, R.id.buttonSix, R.id.buttonSeven, R.id.buttonEight, R.id.buttonNine};
 
     private TextView output;
-
+    private Button buttonC;
     private Button buttonPlus;
     private Button buttonMinus;
     private Button buttonMultiplication;
@@ -34,98 +25,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         processor = new Processor();
 
-        buttonZero = findViewById(R.id.buttonZero);
-        buttonOne = findViewById(R.id.buttonOne);
-        buttonTwo = findViewById(R.id.buttonTwo);
-        buttonThree = findViewById(R.id.buttonThree);
-        buttonFour = findViewById(R.id.buttonFour);
-        buttonFive = findViewById(R.id.buttonFive);
-        buttonSix = findViewById(R.id.buttonSix);
-        buttonSeven = findViewById(R.id.buttonSeven);
-        buttonEight = findViewById(R.id.buttonEight);
-        buttonNine = findViewById(R.id.buttonNine);
         buttonC = findViewById(R.id.buttonC);
-
         output = findViewById(R.id.output);
-
         buttonPlus = findViewById(R.id.buttonPlus);
         buttonMinus = findViewById(R.id.buttonMinus);
         buttonMultiplication = findViewById(R.id.buttonMultiplication);
         buttonDivide = findViewById(R.id.buttonDivide);
         buttonEqually = findViewById(R.id.buttonEqually);
 
-        buttonZero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(0);
-            }
-        });
-
-        buttonOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(1);
-            }
-        });
-
-        buttonTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(2);
-            }
-        });
-
-        buttonThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(3);
-            }
-        });
-
-        buttonFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(4);
-            }
-        });
-
-        buttonFive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(5);
-            }
-        });
-
-        buttonSix.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(6);
-            }
-        });
-
-        buttonSeven.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(7);
-            }
-        });
-
-        buttonEight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(8);
-            }
-        });
-
-        buttonNine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numberClick(9);
-            }
-        });
+        setNumberButtonListeners();
 
         buttonC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,6 +78,18 @@ public class MainActivity extends AppCompatActivity {
                 operationClick(MathOperation.EQUALLY);
             }
         });
+    }
+
+    private void setNumberButtonListeners() {
+        for (int i = 0; i < numberButtonIds.length; i++) {
+            int index = i;
+            findViewById(numberButtonIds[i]).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    numberClick(index);
+                }
+            });
+        }
     }
 
     private void numberClick(int number) {
