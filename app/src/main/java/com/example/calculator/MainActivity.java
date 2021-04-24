@@ -28,17 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonDivide;
     private Button buttonEqually;
 
-    private boolean hasOperation;
-    private int result;
-    private int inputNumber1;
-    private int inputNumber2;
-    private MathOperation lastOperation = MathOperation.NONE;
-
+    private Processor processor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        processor = new Processor();
 
         buttonZero = findViewById(R.id.buttonZero);
         buttonOne = findViewById(R.id.buttonOne);
@@ -51,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         buttonEight = findViewById(R.id.buttonEight);
         buttonNine = findViewById(R.id.buttonNine);
         buttonC = findViewById(R.id.buttonC);
-
 
         output = findViewById(R.id.output);
 
@@ -67,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 numberClick(0);
             }
         });
-
 
         buttonOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,42 +171,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void numberClick(int number) {
-        if (hasOperation) {
+        if (processor.getHasOperation()) {
             output.setText("");
-            hasOperation = false;
         }
+        processor.processNumber();
         output.append(String.valueOf(number));
     }
 
     private void operationClick(MathOperation operation) {
         if (operation == MathOperation.CLEAR) {
             output.setText("");
-            inputNumber1 = 0;
-            inputNumber2 = 0;
-            result = 0;
-            lastOperation = MathOperation.NONE;
             return;
         }
-
-        if (inputNumber1 == 0) {
-            inputNumber1 = Integer.parseInt(String.valueOf(output.getText()));
+        if (processor.getInputNumber1() == 0) {
+            processor.setInputNumber1(Integer.parseInt(String.valueOf(output.getText())));
         } else {
-            inputNumber2 = Integer.parseInt(String.valueOf(output.getText()));
+            processor.setInputNumber2(Integer.parseInt(String.valueOf(output.getText())));
         }
-
-        updateResult(inputNumber1, inputNumber2);
-
+        processor.processOperation(operation);
         if (operation == MathOperation.EQUALLY) {
-            output.setText(String.valueOf(result));
-            inputNumber1 = 0;
-            inputNumber2 = 0;
-            lastOperation = MathOperation.NONE;
+            output.setText(String.valueOf(processor.getResult()));
         } else {
-            lastOperation = operation;
             String symbol = MathOperationToString(operation);
             output.setText(symbol);
         }
-        hasOperation = true;
     }
 
     private String MathOperationToString(MathOperation operation) {
@@ -234,22 +216,5 @@ public class MainActivity extends AppCompatActivity {
                 operationSymbol = "=";
         }
         return operationSymbol;
-    }
-
-    private void updateResult(int number1, int number2) {
-        switch (lastOperation) {
-            case PLUS:
-                result = number1 + number2;
-                break;
-            case MINUS:
-                result = number1 - number2;
-                break;
-            case MULTIPLICATION:
-                result = number1 * number2;
-                break;
-            case DIVIDE:
-                result = number1 / number2;
-                break;
-        }
     }
 }
