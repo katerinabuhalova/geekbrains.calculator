@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme();
+        ThemeHelper.setTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       processor = new Processor();
+        processor = new Processor();
         output = findViewById(R.id.output);
 
         setNumberButtonListeners();
@@ -43,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void openSettings(){
+    private void openSettings() {
+        finish();
         Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(runSettings);
     }
+
     private void numberClick(int number) {
         if (processor.getHasOperation()) {
             output.setText("");
@@ -94,18 +96,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return operationSymbol;
     }
-
-    private void setTheme() {
-        SharedPreferences sharedPref = getSharedPreferences("Settings", MODE_PRIVATE);
-        String themeId = sharedPref.getString("theme", "red");
-        switch (themeId) {
-            case "purple":
-                this.setTheme(R.style.Theme_Calculator);
-                break;
-            case "red":
-                this.setTheme(R.style.Theme_Calculator1);
-                break;
-        }
-    }
-
 }

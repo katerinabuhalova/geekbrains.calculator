@@ -3,13 +3,14 @@ package com.example.calculator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme();
+        ThemeHelper.setTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
@@ -20,19 +21,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void goBackActivity() {
         finish();
-    }
-
-    private void setTheme() {
-        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
-        String themeId = sharedPref.getString("theme", "red");
-        switch (themeId) {
-            case "purple":
-                this.setTheme(R.style.Theme_Calculator);
-                break;
-            case "red":
-                this.setTheme(R.style.Theme_Calculator1);
-                break;
-        }
+        Intent runSettings = new Intent(SettingsActivity.this, MainActivity.class);
+        startActivity(runSettings);
     }
 
     private void setThemePurple() {
