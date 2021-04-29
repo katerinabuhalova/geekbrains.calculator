@@ -10,11 +10,14 @@
     <string name="_number_eight">8</string>
     <string name="_number_nine">9</string>
     <string name="_number_zero">0</string>
-    <string name="_C">C</string>
+    <string name="_number_C">C</string>
     <string name="_divide">/</string>
     <string name="_multiplication">*</string>
     <string name="_plus">+</string>
     <string name="_minus">-</string>
     <string name="_equally">=</string>
+     <string name="_activity2_theme_purple">purple</string>
+    <string name="_activity2_theme_red">red</string>
+    <string name="_button_back">back</string>
 
 </resources>

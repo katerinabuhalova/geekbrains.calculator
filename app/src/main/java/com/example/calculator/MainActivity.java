@@ -2,9 +2,10 @@ package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.provider.Settings;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,84 +13,40 @@ public class MainActivity extends AppCompatActivity {
             R.id.buttonFour, R.id.buttonFive, R.id.buttonSix, R.id.buttonSeven, R.id.buttonEight, R.id.buttonNine};
 
     private TextView output;
-    private Button buttonC;
-    private Button buttonPlus;
-    private Button buttonMinus;
-    private Button buttonMultiplication;
-    private Button buttonDivide;
-    private Button buttonEqually;
-
     private Processor processor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        processor = new Processor();
 
-        buttonC = findViewById(R.id.buttonC);
+        processor = new Processor();
         output = findViewById(R.id.output);
-        buttonPlus = findViewById(R.id.buttonPlus);
-        buttonMinus = findViewById(R.id.buttonMinus);
-        buttonMultiplication = findViewById(R.id.buttonMultiplication);
-        buttonDivide = findViewById(R.id.buttonDivide);
-        buttonEqually = findViewById(R.id.buttonEqually);
 
         setNumberButtonListeners();
 
-        buttonC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                operationClick(MathOperation.CLEAR);
-            }
-        });
+        findViewById(R.id.buttonC).setOnClickListener(v -> operationClick(MathOperation.CLEAR));
+        findViewById(R.id.buttonPlus).setOnClickListener(view -> operationClick(MathOperation.PLUS));
+        findViewById(R.id.buttonMinus).setOnClickListener(view -> operationClick(MathOperation.MINUS));
+        findViewById(R.id.buttonMultiplication).setOnClickListener(view -> operationClick(MathOperation.MULTIPLICATION));
+        findViewById(R.id.buttonDivide).setOnClickListener(view -> operationClick(MathOperation.DIVIDE));
+        findViewById(R.id.buttonEqually).setOnClickListener(view -> operationClick(MathOperation.EQUALLY));
+        findViewById(R.id.buttonSetting).setOnClickListener(view -> openSettings());
 
-        buttonPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                operationClick(MathOperation.PLUS);
-            }
-        });
-
-        buttonMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                operationClick(MathOperation.MINUS);
-            }
-        });
-
-        buttonMultiplication.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                operationClick(MathOperation.MULTIPLICATION);
-            }
-        });
-
-        buttonDivide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                operationClick(MathOperation.DIVIDE);
-            }
-        });
-
-        buttonEqually.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                operationClick(MathOperation.EQUALLY);
-            }
-        });
     }
 
     private void setNumberButtonListeners() {
         for (int i = 0; i < numberButtonIds.length; i++) {
             int index = i;
-            findViewById(numberButtonIds[i]).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    numberClick(index);
-                }
-            });
+            findViewById(numberButtonIds[i]).setOnClickListener(view -> numberClick(index));
         }
+    }
+
+    private void openSettings() {
+        finish();
+        Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(runSettings);
     }
 
     private void numberClick(int number) {

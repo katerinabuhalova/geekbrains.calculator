@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
+    <Button
+        android:id="@+id/buttonSetting"
+        android:layout_gravity="right"
+        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Setting"/>
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +33,7 @@
             android:id="@+id/buttonDivide"
             style="@style/Theme.Calculator.Button"
             android:layout_column="3"
-            android:text="/" />
+            android:text="@string/_divide" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSeven"
@@ -97,7 +105,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonC"
             style="@style/Theme.Calculator.Button"
-            android:text="C" />
+            android:text="@string/_number_C" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonEqually"
