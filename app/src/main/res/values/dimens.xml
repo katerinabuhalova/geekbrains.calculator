@@ -2,5 +2,5 @@
 <resources>
     <dimen name="margin">5dp</dimen>
     <dimen name="height">70dp</dimen>
-
+    <dimen name="margin_second_activity">150dp</dimen>
 </resources>
